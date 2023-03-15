@@ -35,6 +35,6 @@ class SiteController extends Controller
     public function logout() {
         auth()->logout();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

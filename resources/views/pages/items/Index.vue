@@ -1,8 +1,9 @@
 <script setup>
 import {Link} from '@inertiajs/inertia-vue3'
+import Pagination from '../../components/Pagination.vue'
 
 defineProps({
-    'items': Array
+    'items': Object
 })
 </script>
 
@@ -41,7 +42,7 @@ defineProps({
                         </th>
                     </tr>
                 </thead>
-                <tbody v-for="item of items" :key="item.id">
+                <tbody v-for="item of items.data" :key="item.id">
                     <tr class="bg-white border-b">
                         <td class="px-6 py-4">
                            <Link :href="'/items/edit/' + item.id">{{ item.id }}</Link>
@@ -64,5 +65,8 @@ defineProps({
                     </tr>
                 </tbody>
             </table>
+
+            <!-- Paginator -->
+            <Pagination :links="items.links" class="mt-6"/>
     </div>
 </template>

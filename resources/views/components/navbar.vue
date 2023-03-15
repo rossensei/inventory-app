@@ -8,7 +8,7 @@
           </div>
 
           <ul class="md:flex md:items-center">
-            <li class="mx-3">
+            <li v-if="user" class="mx-3">
               <Link href="/" class="text-xl hover:bg-gray-300 hover:rounded-lg">Home</Link>
             </li>
             <li v-if="user" class="mx-3">
@@ -24,6 +24,7 @@
 
           <div class="flex items-center">
             <!-- <p v-if="!user" class="text-sm mr-6">You are logged in as: <strong>Guest</strong></p> -->
+            <Link v-if="!user" href="/" class="text-xl hover:bg-gray-300 hover:rounded-lg mr-5">Home</Link>
             <Link v-if="!user" href="/login" class="text-sm px-3.5 py-1.5 text-white bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg">Login</Link>
             <p v-if="user" class="text-sm mr-6">You are logged in as: &nbsp; <i class="fa-solid fa-user"></i> <strong>{{ user.username }}</strong></p>
             <!-- <a href="" class="p-3 border border-gray-100 rounded-full"><i class="fa-solid fa-user"></i></a> -->

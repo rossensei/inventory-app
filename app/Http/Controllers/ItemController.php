@@ -15,11 +15,21 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::orderBy('name')
-                    ->with('office')
-                    ->get();
+        // $items = Item::orderBy('name')
+        //             ->with('office')
+        //             ->get();
 
-        return inertia('items/Index', compact('items'));
+        // return inertia('items/Index', compact('items'));
+
+        // $items = Item::orderBy('name')
+        //         ->with('office')
+        //         ->paginate(10);
+
+        return inertia('items/Index', [
+            'items' => Item::orderBy('name')
+                        ->with('office')
+                        ->paginate(10)
+        ]);
     }
 
     /**
@@ -47,7 +57,7 @@ class ItemController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required',
-            'value' => 'required',
+            'value' => 'required|numeric',
             'status' => 'required',
             'office_id' => 'required',
         ]);
