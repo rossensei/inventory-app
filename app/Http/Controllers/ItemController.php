@@ -28,7 +28,7 @@ class ItemController extends Controller
         return inertia('items/Index', [
             'items' => Item::orderBy('name')
                         ->with('office')
-                        ->paginate(10)
+                        ->paginate(8)
         ]);
     }
 
@@ -130,6 +130,8 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        return redirect('/items')->with('message', 'Item deleted successfully!');
     }
 }

@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/items', [ItemController::class, 'store']);
     Route::get('/items/edit/{item}', [ItemController::class, 'edit']);
     Route::put('/items/{item}', [ItemController::class, 'update']);
+    Route::delete('/items/{item}', [ItemController::class, 'destroy'])->name('items.destroy');
+    // Route::delete('/items/{item}', [ItemController::class, 'destroy']);
 
     Route::get('/offices', [OfficeController::class, 'index']);
     Route::get('/offices/create', [OfficeController::class, 'create']);

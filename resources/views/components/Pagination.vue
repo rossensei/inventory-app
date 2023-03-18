@@ -9,8 +9,8 @@ defineProps({
 <template>
     <div>
         <Link
-            v-for="link in links" 
-            :key="link.url"
+            v-for="(link, index) in links"
+            v-bind:key="index"
             :href="link.url" 
             v-html="link.label"
             class="px-1"
